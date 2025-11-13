@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="mb-4">Create a New List</h1>
+
+      <%= form_with model: @list, class: "card p-4 shadow-sm" do |f| %>
+        <div class="mb-3">
+          <%= f.label :name, class: "form-label fw-bold" %>
+          <%= f.text_field :name, class: "form-control", placeholder: "e.g. Drama, Comedy, Classic" %>
+          <% if @list.errors[:name].any? %>
+            <div class="text-danger mt-1"><%= @list.errors[:name].join(", ") %></div>
+          <% end %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :image_url, "Cover Image URL (optional)", class: "form-label fw-bold" %>
+          <%= f.text_field :image_url, class: "form-control", placeholder: "https://example.com/image.jpg" %>
+          <div class="form-text">
+            <i class="fas fa-magic text-primary"></i> Leave blank for an automatic cinema-themed image from Unsplash
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <%= f.submit "Create List", class: "btn btn-primary" %>
+          <%= link_to "Back", lists_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
